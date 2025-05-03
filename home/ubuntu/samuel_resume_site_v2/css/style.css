@@ -1,0 +1,937 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Merriweather:wght@400;700;900&display=swap');
+
+/* --- Variáveis Globais --- */
+:root {
+    --primary-font: 'Lato', sans-serif;
+    --heading-font: 'Merriweather', serif;
+    --background-dark: #1a1a1a; /* Charcoal - XP Inspired */
+    --background-card: #2a2a2a;
+    --primary-blue: #003366; /* JPM Blue */
+    --accent-gold: #daa520; /* Gold/Yellow Accent - Mix */
+    --text-light: #f4f4f4;
+    --text-medium: #cccccc;
+    --text-dark: #333333;
+    --link-hover: #ffcc33; /* Brighter Yellow for hover - XP Inspired */
+
+    --border-radius: 5px;
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    --transition-speed: 0.3s ease;
+}
+
+/* --- Reset Básico & Estilos Globais --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--primary-font);
+    background-color: var(--background-dark);
+    color: var(--text-medium);
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--heading-font);
+    color: var(--text-light);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 900;
+}
+
+h2 {
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+/* Underline effect inspired by modern sites */
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--accent-gold);
+}
+
+h3 {
+    font-size: 1.5rem;
+    color: var(--accent-gold);
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+a {
+    color: var(--accent-gold);
+    text-decoration: none;
+    transition: color var(--transition-speed);
+}
+
+a:hover {
+    color: var(--link-hover);
+}
+
+ul {
+    list-style: none;
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 0.5rem;
+    position: relative;
+}
+
+/* Custom bullet points */
+li::before {
+    content: '\2022'; /* Bullet character */
+    color: var(--accent-gold);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+    position: absolute;
+    left: 0;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--accent-gold);
+    color: var(--background-dark);
+    padding: 12px 25px;
+    border: none;
+    border-radius: var(--border-radius);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
+    margin-right: 10px; /* Add margin between buttons */
+}
+
+.btn:hover {
+    background-color: var(--link-hover);
+    color: var(--background-dark);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--accent-gold);
+    border: 2px solid var(--accent-gold);
+}
+
+.btn-secondary:hover {
+    background-color: var(--accent-gold);
+    color: var(--background-dark);
+    border-color: var(--accent-gold);
+}
+
+/* --- Header / Navegação --- */
+header {
+    background-color: rgba(26, 26, 26, 0.9); /* Slightly transparent dark background */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    font-family: var(--heading-font);
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-light);
+}
+
+.nav-logo:hover {
+    color: var(--text-light); /* Keep logo color consistent on hover */
+}
+
+.nav-links a {
+    color: var(--text-medium);
+    margin-left: 2rem;
+    font-weight: bold;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-gold);
+    transition: width var(--transition-speed);
+}
+
+.nav-links a:hover {
+    color: var(--text-light);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* --- Seção Hero --- */
+#hero {
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Parallax effect */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    color: var(--text-light);
+    padding: 6rem 2rem 2rem; /* Add padding top to account for fixed header */
+}
+
+/* Overlay */
+#hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 51, 102, 0.6); /* JPM Blue overlay with opacity */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+}
+
+.profile-pic-hero {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid var(--accent-gold);
+    margin-bottom: 1.5rem;
+    object-fit: cover;
+    box-shadow: 0 0 15px rgba(218, 165, 32, 0.5);
+}
+
+#hero h1 {
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#hero .subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    color: var(--text-medium);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* --- Seção Sobre --- */
+#sobre {
+    background-color: var(--background-dark);
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto; /* Center content */
+    text-align: center;
+}
+
+.contact-info-inline {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem 2rem; /* Row and column gap */
+    font-size: 0.9rem;
+}
+
+.contact-info-inline span,
+.contact-info-inline a {
+    color: var(--text-medium);
+    display: inline-flex;
+    align-items: center;
+}
+
+.contact-info-inline i {
+    margin-right: 8px;
+    color: var(--accent-gold);
+    font-size: 1.1rem;
+}
+
+.contact-info-inline a:hover {
+    color: var(--link-hover);
+}
+
+/* --- Seção Experiência --- */
+#experiencia {
+    background-color: var(--background-card); /* Slightly lighter background for contrast */
+}
+
+.experience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.experience-item {
+    background-color: var(--background-dark);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.experience-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.experience-item h3 {
+    margin-bottom: 0.5rem;
+}
+
+.company-duration {
+    font-size: 0.9rem;
+    color: var(--text-medium);
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.experience-item ul {
+    padding-left: 20px; /* Indent list items */
+}
+
+/* --- Seção Formação --- */
+#formacao {
+    background-color: var(--background-dark);
+}
+
+.education-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.education-item {
+    /* Similar styling to experience-item, maybe slightly different background or border */
+    background-color: var(--background-card);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    border-left: 5px solid var(--accent-gold);
+    transition: transform var(--transition-speed);
+}
+
+.education-item:hover {
+    transform: scale(1.03);
+}
+
+.education-item h3 {
+    font-size: 1.3rem;
+    color: var(--text-light);
+}
+
+.institution-duration {
+    font-size: 0.9rem;
+    color: var(--text-medium);
+    margin-top: 0.3rem;
+}
+
+/* --- Seção Cursos e Certificações --- */
+#cursos-certificacoes {
+    background-color: var(--background-card);
+}
+
+.skills-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.column h3 {
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--accent-gold);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.column ul {
+    padding-left: 20px;
+}
+
+/* --- Seção Projetos --- */
+#projetos {
+    background-color: var(--background-dark);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.project-item {
+    background-color: var(--background-card);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.project-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.project-item h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+}
+
+/* --- Footer --- */
+footer {
+    background-color: var(--background-card);
+    color: var(--text-medium);
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-top: 3rem;
+}
+
+.social-links a {
+    color: var(--text-medium);
+    font-size: 1.8rem;
+    margin: 0 0.8rem;
+    transition: color var(--transition-speed), transform var(--transition-speed);
+}
+
+.social-links a:hover {
+    color: var(--accent-gold);
+    transform: scale(1.2);
+}
+
+footer p {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+footer .fa-heart {
+    color: var(--accent-gold);
+}
+
+/* --- Página de Contato --- */
+.contact-form-section {
+    padding: 6rem 2rem 4rem; /* Adjust padding for fixed header */
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.contact-form-section h1 {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-light);
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--text-medium);
+    border-radius: var(--border-radius);
+    background-color: var(--background-card);
+    color: var(--text-light);
+    font-family: var(--primary-font);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 5px rgba(218, 165, 32, 0.5);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+/* --- Página de Obrigado --- */
+.thank-you-section {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6rem 2rem 2rem;
+}
+
+.thank-you-section h1 {
+    color: var(--accent-gold);
+    margin-bottom: 1rem;
+}
+
+.thank-you-section p {
+    margin-bottom: 2rem;
+    max-width: 500px;
+}
+
+/* --- Responsividade --- */
+@media (max-width: 768px) {
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 1.8rem; }
+    h3 { font-size: 1.3rem; }
+
+    nav {
+        flex-direction: column;
+    }
+
+    .nav-links {
+        margin-top: 1rem;
+    }
+
+    .nav-links a {
+        margin: 0 0.8rem;
+    }
+
+    #hero {
+        padding-top: 8rem; /* Adjust for potentially taller header */
+    }
+
+    .profile-pic-hero {
+        width: 120px;
+        height: 120px;
+    }
+
+    .container {
+        padding: 3rem 1rem;
+    }
+
+    .skills-columns,
+    .experience-grid,
+    .education-grid,
+    .projects-grid {
+        grid-template-columns: 1fr; /* Stack columns/items */
+    }
+
+    .contact-info-inline {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+}
+
+/* --- Animações Sutis (Opcional) --- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+section {
+    animation: fadeIn 0.6s ease-out forwards;
+    opacity: 0; /* Start hidden for animation */
+}
+
+/* Delay animation for subsequent sections */
+#sobre { animation-delay: 0.2s; }
+#experiencia { animation-delay: 0.4s; }
+#formacao { animation-delay: 0.6s; }
+#cursos-certificacoes { animation-delay: 0.8s; }
+#projetos { animation-delay: 1s; }
+
+
+
+/* --- Refinamentos de Design Elegante (Passo 004) --- */
+
+/* Tipografia Refinada (Estilo JPM) */
+h2 .highlight {
+    color: var(--accent-gold);
+    font-weight: 700; /* Manter o peso ou ajustar conforme necessário */
+}
+
+h2 {
+    /* Ajuste para permitir highlight */
+    color: var(--text-light); /* Cor base do título */
+}
+
+/* Refinamento de Cards (Estilo XP/Moderno) */
+.experience-item,
+.education-item,
+.project-item {
+    border: 1px solid rgba(218, 165, 32, 0.1); /* Borda sutil dourada */
+    background: linear-gradient(145deg, var(--background-card), #222); /* Gradiente sutil */
+}
+
+.experience-item:hover,
+.education-item:hover,
+.project-item:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    border-left-color: var(--link-hover); /* Highlight na borda esquerda no hover (para education-item) */
+}
+
+/* Interações Aprimoradas */
+.btn {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transform: translateY(-3px); /* Efeito de elevação mais pronunciado */
+}
+
+.nav-links a::after {
+    height: 3px; /* Linha de sublinhado mais espessa */
+    background-color: var(--link-hover);
+}
+
+.social-links a:hover {
+    transform: scale(1.2) rotate(5deg); /* Pequena rotação no hover */
+}
+
+/* Refinamento Seção Hero */
+#hero .subtitle {
+    font-family: var(--primary-font); /* Usar Lato para subtítulo */
+    font-weight: 300; /* Mais leve */
+    letter-spacing: 0.5px;
+}
+
+/* Efeito de Overlay mais sofisticado (opcional) */
+/* #hero::before {
+    background: linear-gradient(to bottom, rgba(0, 51, 102, 0.5), rgba(26, 26, 26, 0.8));
+} */
+
+/* Ajustes Gerais de Layout e Espaçamento */
+body {
+    font-size: 17px; /* Leve aumento para melhor legibilidade */
+}
+
+.container {
+    padding: 5rem 2rem; /* Aumentar padding vertical */
+}
+
+section:nth-child(odd) {
+    /* Alternar cores de fundo sutilmente se desejado */
+    /* background-color: #1f1f1f; */
+}
+
+/* Adicionar Placeholder para Menu Mobile (a ser implementado com JS) */
+.menu-toggle {
+    display: none; /* Oculto em desktop */
+    background: none;
+    border: none;
+    color: var(--text-light);
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Ocultar links em mobile inicialmente */
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 100%; /* Abaixo do header */
+        left: 0;
+        background-color: rgba(26, 26, 26, 0.98);
+        padding: 1rem 0;
+    }
+
+    .nav-links.active {
+        display: flex; /* Mostrar quando ativo */
+    }
+
+    .nav-links a {
+        margin: 0.8rem 0;
+        text-align: center;
+        width: 100%;
+    }
+
+    .menu-toggle {
+        display: block; /* Mostrar botão hambúrguer */
+    }
+
+    #hero {
+        padding-top: 6rem; /* Ajustar padding para header fixo */
+    }
+}
+
+
+
+
+/* --- Ajustes Finais (Feedback) --- */
+
+/* Aplicar Times New Roman ao logo no cabeçalho */
+.nav-logo {
+    font-family: 'Times New Roman', Times, serif; /* Aplicando Times New Roman */
+    font-weight: bold; /* Manter negrito se desejado */
+}
+
+
+
+/* --- Ajustes Finais (Feedback) --- */
+
+/* Aplicar Times New Roman ao logo no cabeçalho */
+.nav-logo {
+    font-family: 'Times New Roman', Times, serif; /* Aplicando Times New Roman */
+    font-weight: bold; /* Manter negrito se desejado */
+    font-size: 1.7rem; /* Aumentar um pouco o tamanho */
+    letter-spacing: 0.5px;
+}
+
+/* Destaque sutil no subtítulo da seção Hero */
+#hero .subtitle {
+    /* Pode-se adicionar um background sutil ou borda */
+    /* Exemplo: background-color: rgba(218, 165, 32, 0.1); padding: 5px 10px; border-radius: 3px; */
+    /* Ou apenas um peso de fonte diferente */
+    font-weight: 400; /* Um pouco mais de peso que o 300 anterior */
+    color: var(--text-light); /* Tornar um pouco mais claro */
+}
+
+/* Animação de entrada mais pronunciada para seções */
+@keyframes slideInUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+section {
+    animation: slideInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    opacity: 0; /* Start hidden for animation */
+}
+
+/* Hover mais interativo nos cards */
+.experience-item:hover,
+.education-item:hover,
+.project-item:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+    border-left-color: var(--link-hover); /* Mantém ou ajusta conforme o card */
+}
+
+/* Efeito de "glow" sutil no hover dos links sociais */
+.social-links a:hover {
+    color: var(--link-hover);
+    transform: scale(1.2) rotate(0deg); /* Remover rotação anterior */
+    text-shadow: 0 0 10px var(--link-hover);
+}
+
+/* Destaque na busca por estágio (seção Sobre Mim) */
+#sobre .about-content p:first-of-type { /* Focar no primeiro parágrafo que menciona o estágio */
+    /* Pode-se adicionar um estilo específico, como uma borda sutil ou um fundo levemente diferente */
+    /* Exemplo: border-left: 3px solid var(--accent-gold); padding-left: 15px; */
+    font-weight: 400; /* Dar um leve destaque */
+}
+
+/* Ajuste no formulário movido para index.html */
+#contato {
+    background-color: var(--background-card); /* Fundo consistente com outras seções */
+    border-top: 1px solid rgba(218, 165, 32, 0.1); /* Linha divisória sutil */
+}
+
+/* Garantir que o botão do formulário tenha o mesmo hover dos outros */
+#contato .btn:hover {
+    background-color: var(--link-hover);
+    color: var(--background-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+
+
+/* --- Refinamentos Finais Adicionais --- */
+
+/* Suavizar transições em todos os elementos com hover */
+* {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Pequeno ajuste no espaçamento dos itens de lista nas seções */
+.experience-item ul li,
+.skills-columns ul li,
+.projects-grid .project-item p {
+    margin-bottom: 0.7rem; /* Um pouco mais de respiro */
+}
+
+/* Efeito de entrada sutil para os itens de lista ao rolar */
+.experience-item ul li,
+.skills-columns ul li,
+.projects-grid .project-item {
+    /* Pode-se adicionar uma animação de fade-in ou slide-in leve */
+    /* Exemplo: animation: fadeIn 0.5s ease-out forwards; opacity: 0; animation-delay: 0.2s; */
+}
+
+/* Garantir que o link "Contato" no menu também tenha hover suave */
+.nav-links a:hover {
+    color: var(--link-hover);
+    /* text-shadow: 0 0 5px var(--link-hover); /* Efeito glow sutil */
+}
+
+/* Ajuste final no rodapé para melhor alinhamento */
+footer .container {
+    display: flex;
+    flex-direction: column; /* Empilhar verticalmente */
+    align-items: center; /* Centralizar itens */
+    gap: 0.5rem; /* Espaço entre os elementos */
+}
+
+footer .social-links {
+    margin-bottom: 0.5rem; /* Espaço abaixo dos links sociais */
+}
+
+
+
+
+
+/* --- Aprimoramentos Visuais e Interativos Adicionais (Feedback Final) --- */
+
+/* Fundo com Gradiente Sutil */
+body {
+    /* background: linear-gradient(to bottom, #1a1a1a, #222222); */ /* Gradiente sutil opcional */
+    /* Ou uma textura leve */
+    /* background-image: url('path/to/subtle-noise.png'); */
+}
+
+/* Efeito Hover Mais Dinâmico para Cards */
+.experience-item:hover,
+.education-item:hover,
+.project-item:hover {
+    transform: translateY(-8px) scale(1.02); /* Leve aumento e elevação */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5); /* Sombra mais pronunciada */
+    border-left-color: var(--link-hover); /* Mantém highlight na borda esquerda */
+}
+
+/* Animação Sutil para Highlight nos Títulos */
+h2 .highlight {
+    display: inline-block; /* Necessário para transform */
+    transition: transform var(--transition-speed), color var(--transition-speed);
+}
+
+h2:hover .highlight {
+    transform: scale(1.05); /* Leve aumento no hover da seção */
+    color: var(--link-hover);
+}
+
+/* Refinamento Sombra Título Hero */
+#hero h1 {
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6);
+}
+
+/* Botão Scroll-to-Top */
+.scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: var(--accent-gold);
+    color: var(--background-dark);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, background-color 0.3s ease;
+    z-index: 999;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.scroll-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-to-top:hover {
+    background-color: var(--link-hover);
+}
+
+/* Melhoria na Animação de Entrada das Seções */
+@keyframes fadeInUpEnhanced {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+section {
+    animation: fadeInUpEnhanced 0.8s ease-out forwards;
+    opacity: 0; /* Manter início oculto */
+}
+
+/* Resetar animação para elementos já animados antes */
+#sobre, #experiencia, #formacao, #cursos-certificacoes, #projetos, .contact-form-section {
+    animation: fadeInUpEnhanced 0.8s ease-out forwards;
+    opacity: 0; /* Garantir que comece oculto */
+}
+
+/* Reaplicar delays */
+#sobre { animation-delay: 0.2s; }
+#experiencia { animation-delay: 0.4s; }
+#formacao { animation-delay: 0.6s; }
+#cursos-certificacoes { animation-delay: 0.8s; }
+#projetos { animation-delay: 1.0s; }
+.contact-form-section { animation-delay: 1.2s; } /* Adicionar delay para contato se estiver no index */
+
+/* Ajuste fino nas fontes (se necessário - manter Merriweather/Lato como base) */
+/* Exemplo: Leve aumento no espaçamento de letras para clareza */
+/* p {
+    letter-spacing: 0.2px;
+} */
+
+/* Adicionar transição suave ao body para mudanças de fundo (se houver) */
+body {
+    transition: background-color 0.5s ease;
+}
+

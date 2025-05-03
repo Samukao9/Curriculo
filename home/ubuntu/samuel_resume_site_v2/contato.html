@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - Samuel Regente</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <nav class="container">
+            <a href="index.html" class="nav-logo">Samuel Regente</a> <!-- Link para index.html -->
+            <button class="menu-toggle" aria-label="Abrir menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links">
+                <a href="index.html#sobre">Sobre</a>
+                <a href="index.html#experiencia">Experiência</a>
+                <a href="index.html#formacao">Formação</a>
+                <a href="index.html#cursos-certificacoes">Cursos</a>
+                <a href="index.html#projetos">Projetos</a>
+                <a href="contato.html">Contato</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="contact-form-section container">
+            <h1>Entre em <span class="highlight">Contato</span></h1>
+            <p style="text-align: center; margin-bottom: 3rem;">Tem alguma pergunta ou oportunidade? Utilize o formulário abaixo.</p>
+
+            <!-- Formulário usando FormSubmit -->
+            <form action="https://formsubmit.co/samuelregentework@gmail.com" method="POST">
+                <!-- Configurações FormSubmit (ocultas) -->
+                <input type="hidden" name="_subject" value="Novo Contato do Site Portfólio!">
+                <input type="hidden" name="_next" value="https://ijzqgmpq.manus.space/obrigado.html">
+                <input type="hidden" name="_captcha" value="false"> <!-- Desativar captcha padrão (opcional) -->
+                <input type="hidden" name="_template" value="box"> <!-- Template de email (opcional) -->
+
+                <div class="form-group">
+                    <label for="name">Nome</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensagem</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="btn">Enviar Mensagem</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                 <a href="http://linkedin.com/in/samuel-de-faria-regente-b909b8267" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <p>&copy; 2025 Samuel de Faria Regente. Todos os direitos reservados.</p>
+            <p>Desenvolvido com <i class="fas fa-heart"></i> e IA</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
+
